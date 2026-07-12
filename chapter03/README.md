@@ -109,7 +109,7 @@ expression.
 
 > `strtol()` for conversion of strings to long integers;
 
-> ... **Shell sort** for soring an array of integers. ..., which was invented in 
+> ... **Shell sort** for sorting an array of integers. ..., which was invented in 
 1959 by D. L. Shell.
 
 ### Comma "," operator

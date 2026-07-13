@@ -120,3 +120,70 @@ type and value of the right operand_.
 
 > The commas that separate function arguments, variables in declarations, etc., are
 **not comma operators**, and **do not guarantee left to right evaluation**.
+
+
+## 3.6 Loops—Do-while
+
+The syntax is
+
+```c
+do
+    statement;
+while (expression)
+```
+
+> the body is always executed at least once
+
+No braces are necessary for single statement.
+
+
+## 3.8 Goto and Labels
+
+A label can be thought of as a bookmark in the code. When that bookmark is called with
+a `goto` statement, the program directly jumps to that bookmark point.
+
+> A label has the same form as a variable name, and is followed by a colon. It can be
+attached to any statement in the same function as the goto. The scope of a label is
+the entire function.
+
+```c
+{
+    int a[] = {2, 4, 5, 1, 5, 9, 3, 1};
+
+    int target = 1, i;
+    for (i = 0; i < 8; i++)
+        if ([i] == target)
+            goto found;
+
+    printf("NOT FOUND!\n");
+
+found:
+    printf("FOUND");
+    int index = i;
+    if (1)
+        printf(" AT INDEX %d\n", index);
+}
+```
+
+Statements under a label will always be executed, no matter whether a `goto` was
+executed or not with that label. For instance, if `target = 0` and the output would
+look like this:
+
+```
+NOT FOUND!
+FOUND AT INDEX 8
+```
+
+A `goto` can create an infinite loop if the label is attached somewhere before the `goto`
+is executed. Look at the code below.
+
+```c
+    if (0) {
+start:
+    printf("HELLO\n");
+    }
+
+    goto start;
+```
+
+The `if (0)` condition is not checked because the jump bypasses it.
